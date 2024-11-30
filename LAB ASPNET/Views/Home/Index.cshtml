@@ -4,8 +4,14 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome @ViewData["User"] !</h1>
+    <p>Your age: @ViewData["Age"]</p>
+    <p>Driving Licence: @(Convert.ToBoolean(ViewData["HasDrivingLicence"]) ? "Yes" : "No")</p>
 </div>
-@Html.ActionLink("John", "Index", "Home", new { Name = "John" })
-@Html.ActionLink("Mary", "Index", "Home", new { Name = "Mary" })
-@Html.ActionLink("Ben", "Index", "Home", new { Name = "Ben" })
-@Html.ActionLink("Jane", "Index", "Home", new { Name = "Jane" })
+
+<div class="text-center">
+    <h3>Choose a user:</h3>
+    @Html.ActionLink("John", "Index", "Home", new { name = "John", age = 30, hasDrivingLicence = true }, new { @class = "btn btn-primary mx-2" })
+    @Html.ActionLink("Mary", "Index", "Home", new { name = "Mary", age = 25, hasDrivingLicence = false }, new { @class = "btn btn-primary mx-2" })
+    @Html.ActionLink("Ben", "Index", "Home", new { name = "Ben", age = 40, hasDrivingLicence = true }, new { @class = "btn btn-primary mx-2" })
+    @Html.ActionLink("Jane", "Index", "Home", new { name = "Jane", age = 22, hasDrivingLicence = false }, new { @class = "btn btn-primary mx-2" })
+</div>

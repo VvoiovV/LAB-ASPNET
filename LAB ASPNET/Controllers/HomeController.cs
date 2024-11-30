@@ -13,14 +13,27 @@ namespace LAB_ASPNET.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index([FromQuery] string name, [FromQuery] int? age, [FromQuery] bool? hasDrivingLicence)
         {
-            string username = this.Request.Query["Name"].ToString();
-            if (string.IsNullOrEmpty(username))
-                username = "Stranger";
+            string username = string.IsNullOrEmpty(name) ? "Stranger" : name;
+            int userAge = age ?? 0;
+            bool userHasDrivingLicence = hasDrivingLicence ?? false;
+
             ViewData["User"] = username;
-            return View();
+            ViewData["Age"] = userAge;
+            ViewData["HasDrivingLicence"] = userHasDrivingLicence;
+
+            //zmiany testy
+            if (userAge < 18)
+            {
+                return View("Under");
+            }
+            else
+            {
+                return View("Above");
+            }
         }
+
 
         public IActionResult Privacy()
         {
