@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @ViewData["User"] !</h1>
+</div>
+@Html.ActionLink("John", "Index", "Home", new { Name = "John" })
+@Html.ActionLink("Mary", "Index", "Home", new { Name = "Mary" })
+@Html.ActionLink("Ben", "Index", "Home", new { Name = "Ben" })
+@Html.ActionLink("Jane", "Index", "Home", new { Name = "Jane" })
